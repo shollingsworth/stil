@@ -22,6 +22,10 @@ func MultiFileVim(srcdir string, match_string string) {
 	ci.Stderr = io.MultiWriter(os.Stderr, &stderrBuf)
 	err := ci.Run()
 	out := strings.TrimSpace(stdoutBuf.String())
+	if (out == "") {
+		fmt.Println("No files selected")
+		return
+	}
 	files := strings.Split(out, "\n")
 
 	cmdstr = fmt.Sprintf("vim -p %s", strings.Join(files, " "))
