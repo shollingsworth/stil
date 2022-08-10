@@ -9,7 +9,10 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "stil",
-	Short: "stevo cli utility",
+	Short: "stupid little cli utility",
+	CompletionOptions: cobra.CompletionOptions{
+		HiddenDefaultCmd: true,
+	},
 }
 
 func Execute() {

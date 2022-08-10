@@ -11,8 +11,8 @@ func LocateCopy(search string) error {
 	if out == "" {
 		return nil
 	}
-	cmdstr = fmt.Sprintf("cp %s .", out)
-	_, err = ExecAllOut(cmdstr)
+	cmdstr = fmt.Sprintf("cp -i %s .", out)
+	_, err = ExecInteractive(cmdstr)
 	fmt.Println(cmdstr)
 	return err
 }

@@ -13,8 +13,8 @@ func FuzzyCopy(src, dest string) (string, error) {
 	if srcdir == "" {
 		return "", nil
 	}
-	cmdstr = fmt.Sprintf("cp -a %s %s", srcdir, dest)
-	out, err := ExecBuf(cmdstr)
+	cmdstr = fmt.Sprintf("cp -i -a %s %s", srcdir, dest)
+	out, err := ExecInteractive(cmdstr)
 	if err != nil {
 		return "", err
 	}
