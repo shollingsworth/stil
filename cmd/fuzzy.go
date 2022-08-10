@@ -49,8 +49,19 @@ var FuzzySubCopyDirCmd = &cobra.Command{
 	},
 }
 
+var FuzzyLocateCopyCmd = &cobra.Command{
+	Use:     "locatecopy [match string]",
+	Short:   "Locate and copy",
+	Aliases: []string{"lc"},
+	Run: func(cmd *cobra.Command, args []string) {
+		util.LocateCopy(args[0])
+	},
+}
+
 func init() {
 	FuzzySubCopyDirCmd.Args = cobra.MinimumNArgs(1)
+	FuzzyLocateCopyCmd.Args = cobra.MinimumNArgs(1)
+	FuzzyCmd.AddCommand(FuzzyLocateCopyCmd)
 	FuzzyCmd.AddCommand(FuzzySubVimMultiCmd)
 	FuzzyCmd.AddCommand(FuzzySubCopyDirCmd)
 	rootCmd.AddCommand(FuzzyCmd)
